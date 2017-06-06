@@ -1,0 +1,85 @@
+//@flow
+
+declare class VueHead {
+    title: string;
+    meta: Object[];
+    constructor(title: string, meta: Object[]): void;
+}
+
+declare class VueScope {
+    head: VueHead;
+    components: string[];
+    constructor(head: Object, components: string[]): void;
+}
+
+declare class Scope {
+    data: Object;
+    vue: VueScope;
+}
+
+declare class Req {
+    app: Object;
+    scope: Scope;
+    csrfToken: Function;
+    session: Object;
+    query: Object;
+    body: Object;
+    params: Object;
+    ip: string;
+    headers: Object;
+    url: Object;
+    originalUrl: string;
+    method: string;
+    path: string;
+    protocol: string;
+    translate(message: string): string;
+    get(field: string): string;
+    is(type: string): boolean;
+    csrfToken(): string;
+    logout(): void;
+    getCatalog(lang: string): void;
+}
+
+declare class Res {
+    render(route: string, scope: Scope): void;
+    redirect(route: string): void;
+    json(json: Object): void;
+    status(status: number): void;
+    location(path: string): void;
+    redirect(path: string): void;
+    send(body: string | Object | number[] | string[] | Object[]): void;
+    sendStatus(status: number): void;
+    set(field: string | Object, value?: string): void;
+    end(): void;
+}
+
+declare class Router {
+    get(route: string, callback: Function | Function[], optionalCallback?: Function): void;
+    post(route: string, callback: Function | Function[], optionalCallback?: Function): void;
+    put(route: string, callback: Function | Function[], optionalCallback?: Function): void;
+    delete(route: string, callback: Function | Function[], optionalCallback?: Function): void;
+}
+
+declare class VueHead {
+    title: string;
+    meta: Object[];
+    constructor(title: string, meta: Object[]): void;
+}
+
+declare class VueScope {
+    head: VueHead;
+    components: string[];
+    constructor(head: Object, components: string[]): void;
+}
+
+declare export class Scope {
+    data: Object;
+    vue: VueScope;
+    constructor(dataObj: Object, vueObj: Object): void;
+    mergeData(dataObj: Object): void;
+    mergeVue(vueObj: Object): void;
+}
+
+declare export function init(options: Object): void;
+declare export function defaultScope(req: Req, res: Res, next: Function): void;
+declare export function expressVue(componentPath: string, options: Object, callback: Function): void;

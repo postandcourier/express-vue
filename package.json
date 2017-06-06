@@ -9,10 +9,10 @@
     "url": "https://cherubini.casa"
   },
   "files": [
-    "dist"
+    "lib"
   ],
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "keywords": [
     "vue",
     "express",
@@ -26,8 +26,8 @@
       "test/*.js"
     ],
     "source": [
-      "lib/**/*.js",
-      "!dist/**/*"
+      "src/**/*.js",
+      "!lib/**/*"
     ],
     "concurrency": 5,
     "failFast": false,
@@ -39,7 +39,7 @@
   },
   "nyc": {
     "include": [
-      "lib/**/*.js"
+      "src/**/*.js"
     ]
   },
   "devDependencies": {
@@ -55,6 +55,7 @@
     "eslint-plugin-babel": "^4.0.0",
     "express": "^4.14.0",
     "flow-bin": "^0.44.2",
+    "flow-remove-types": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-ava": "^0.17.1",
     "gulp-babel": "^6.1.2",
@@ -73,10 +74,12 @@
   },
   "repository": "express-vue/express-vue",
   "scripts": {
-    "prepublish": "gulp build",
-    "test": "gulp test",
+    "build": "npm run clean && flow-remove-types src/ -d lib/ -p -i .flow && cp src/*.js.flow lib",
+    "prepublish": "npm run build",
+    "test": "eslint app && TEST='true' nyc ava",
+    "clean": "rm -rf lib",
     "preversion": "npm test",
-    "version": "gulp build && git add -A",
+    "version": "npm run build && git add -A",
     "postversion": "git push && git push --tags",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
