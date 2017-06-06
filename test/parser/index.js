@@ -1,8 +1,8 @@
 import test from 'ava';
 import fs from 'fs';
-import {Defaults, Types} from '../../lib/models';
-import * as Parser from '../../lib/parser';
-import {renderHtmlUtil} from '../../lib/utils';
+import {Defaults, Types} from '../../src/models';
+import * as Parser from '../../src/parser';
+import {renderHtmlUtil} from '../../src/utils';
 
 let types    = new Types();
 const component = __dirname + '/../component.vue';

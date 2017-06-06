@@ -1,7 +1,7 @@
 // @flow
-import renderError from './renderError';
-import {renderHtmlUtil} from './render';
-import Defaults from '../models';
+const renderError = require('./renderError');
+const renderHtmlUtil = require('./render').renderHtmlUtil;
+const Defaults = require('../models').Defaults;
 
 function renderComponents(components: Object, defaults: Defaults, callback: Function) {
     renderHtmlUtil(components, defaults).then(function(html) {

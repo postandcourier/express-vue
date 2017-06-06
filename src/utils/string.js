@@ -1,5 +1,5 @@
 // @flow
-import xss from 'xss';
+const xss = require('xss');
 
 function scriptToString(script: Object): string {
     let string = '';
@@ -30,4 +30,4 @@ function scriptToString(script: Object): string {
     return `{${string}}`;
 }
 
-export default scriptToString;
+module.exports = scriptToString;

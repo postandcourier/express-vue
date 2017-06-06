@@ -1,5 +1,5 @@
 // @flow
-var Scope = require('../models').Scope;
+const Scope = require('../models').Scope;
 
 function defaultData(req): Object {
     return {

@@ -5,4 +5,4 @@ function renderError(error: string, callback: Function) {
     callback(new Error(error));
 }
 
-export default renderError;
+module.exports = renderError;

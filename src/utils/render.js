@@ -1,9 +1,9 @@
 // @flow
-import {Types}          from '../models';
-import scriptToString   from './string';
-import headUtil         from './head';
-import paramCase        from 'param-case';
-import Vue              from 'vue';
+const Types          = require('../models').Types;
+const scriptToString = require('./string');
+const headUtil       = require('./head');
+const paramCase      = require('param-case');
+const Vue            = require('vue');
 
 const renderer        = require('vue-server-renderer').createRenderer();
 const appRegex        = /{{{app}}}/igm;
@@ -137,10 +137,9 @@ function renderHtmlUtil(components: Object, defaults: Object) {
 }
 
 
-export {
-    renderUtil,
-    layoutUtil,
-    renderHtmlUtil,
-    renderVueComponents,
-    renderVueMixins
-};
+
+module.exports.renderUtil = renderUtil;
+module.exports.layoutUtil = layoutUtil;
+module.exports.renderHtmlUtil = renderHtmlUtil;
+module.exports.renderVueComponents = renderVueComponents;
+module.exports.renderVueMixins = renderVueMixins;

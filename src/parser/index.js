@@ -1,11 +1,11 @@
 // @flow
-import fs      from 'fs';
-import minify  from 'html-minifier';
-import {DataObject, Types} from '../models';
-import requireFromString from 'require-from-string';
-import pug     from 'pug';
-import camelCase from 'camel-case';
-import styleParser from './style';
+const fs                = require('fs');
+const minify            = require('html-minifier');
+const Models            = require('../models');
+const requireFromString = require('require-from-string');
+const pug               = require('pug');
+const camelCase         = require('camel-case');
+const styleParser       = require('./style');
 
 const htmlMinifier  = minify.minify;
 const htmlRegex     = /(<template.*?>)([\s\S]*)(<\/template>)/gm;
@@ -33,12 +33,12 @@ function htmlParser(body: string, minify: boolean) {
 }
 
 
-function dataParser(script: Object, defaults: Object, type: Types) {
+function dataParser(script: Object, defaults: Object, type: string) {
     let finalScript = {};
     for (var element in script) {
         if (script.hasOwnProperty(element)) {
             if (element === 'data') {
-                let data = new DataObject(script.data(), defaults.options.data, type).data;
+                let data = new Models.DataObject(script.data(), defaults.options.data, type).data;
                 finalScript[element] = () => data;
             } else {
                 finalScript[element] = script[element];
@@ -48,7 +48,7 @@ function dataParser(script: Object, defaults: Object, type: Types) {
     return finalScript;
 }
 
-function scriptParser(script: string, defaults: Object, type: Types) {
+function scriptParser(script: string, defaults: Object, type: string) {
     const options = {
         'presets': ['es2015']
     };
@@ -65,7 +65,7 @@ function scriptParser(script: string, defaults: Object, type: Types) {
     return finalScript;
 }
 
-function layoutParser(layoutPath: string, defaults: Object, type: Types) {
+function layoutParser(layoutPath: string, defaults: Object, type: string) {
     return new Promise(function(resolve) {
         fs.readFile(layoutPath, 'utf-8', function (err, content) {
             if (err) {
@@ -91,7 +91,7 @@ function layoutParser(layoutPath: string, defaults: Object, type: Types) {
     });
 }
 
-function componentParser(templatePath: string, defaults: Object, type: Types) {
+function componentParser(templatePath: string, defaults: Object, type: string) {
     return new Promise(function(resolve, reject) {
         fs.readFile(templatePath, 'utf-8', function (err, content) {
             if (err) {
@@ -129,11 +129,9 @@ function componentParser(templatePath: string, defaults: Object, type: Types) {
     });
 }
 
-export {
-    componentParser,
-    layoutParser,
-    scriptParser,
-    styleParser,
-    dataParser,
-    htmlParser
-};
+module.exports.componentParser = componentParser;
+module.exports.layoutParser = layoutParser;
+module.exports.scriptParser = scriptParser;
+module.exports.styleParser = styleParser;
+module.exports.dataParser = dataParser;
+module.exports.htmlParser = htmlParser;

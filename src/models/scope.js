@@ -53,4 +53,4 @@ class Scope {
     }
 }
 
-module.exports.Scope = Scope;
+module.exports = Scope;

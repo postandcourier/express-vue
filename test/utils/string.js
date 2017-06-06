@@ -1,5 +1,5 @@
 import test   from 'ava';
-import {scriptToString} from '../../lib/utils';
+import {scriptToString} from '../../src/utils';
 
 const object = {
     'string': 'foo',

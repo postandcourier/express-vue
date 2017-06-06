@@ -1,5 +1,5 @@
 import test from 'ava';
-import {headUtil} from '../../lib/utils';
+import {headUtil} from '../../src/utils';
 
 const newHead = {
     head: {

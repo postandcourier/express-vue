@@ -1,5 +1,5 @@
 import test from 'ava';
-import {renderVueMixins} from '../../lib/utils';
+import {renderVueMixins} from '../../src/utils';
 
 test('it should render global mixins', t => {
     var mixin = {

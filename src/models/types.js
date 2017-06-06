@@ -11,4 +11,4 @@ class Types {
     }
 }
 
-export default Types;
+module.exports = Types;

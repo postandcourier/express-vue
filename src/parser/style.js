@@ -1,5 +1,5 @@
 // @flow
-import CleanCSS from 'clean-css';
+const CleanCSS = require('clean-css');
 
 const styleRegex = /(<style.*?>)([\s\S]*?)(<\/style>)/gm;
 
@@ -23,4 +23,4 @@ function styleParser(template: string, regex: RegExp): string {
     return output.styles;
 }
 
-export default styleParser;
+module.exports = styleParser;

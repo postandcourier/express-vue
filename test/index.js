@@ -1,10 +1,10 @@
 import test   from 'ava';
-import expressVue from '../lib';
-import {Defaults} from '../lib/models';
+import {expressVue} from '../src';
+import {Defaults} from '../src/models';
 import {
     setupComponentArray,
     renderError
-} from '../lib/utils';
+} from '../src/utils';
 
 const options = {
     settings: {

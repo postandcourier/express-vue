@@ -1,5 +1,5 @@
 import test   from 'ava';
-import {Defaults, Types, DataObject} from '../../lib/models';
+import {Defaults, Types, DataObject} from '../../src/models';
 
 const defaults = {
     settings: {

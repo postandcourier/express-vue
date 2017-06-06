@@ -1,11 +1,10 @@
-import Types      from './types';
-import Defaults   from './defaults';
-import DataObject from './dataObject';
-import Scope      from './scope';
+// @flow
+const Types      = require('./types');
+const Defaults   = require('./defaults');
+const DataObject = require('./dataObject');
+const Scope      = require('./scope');
 
-export {
-    Types,
-    Defaults,
-    DataObject,
-    Scope
-};
+module.exports.Types = Types;
+module.exports.Defaults = Defaults;
+module.exports.DataObject = DataObject;
+module.exports.Scope = Scope;

@@ -2,7 +2,7 @@ import test   from 'ava';
 import {
     getParamCasePath,
     getCorrectPathForFile
-} from '../../lib/utils';
+} from '../../src/utils';
 
 test('Params Path', t => {
     const originalPath = '/Users/foo/code/test/components/componentFile.vue';

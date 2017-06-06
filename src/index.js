@@ -22,5 +22,4 @@ function expressVue(componentPath: string, options: Object, callback: Function) 
 
 module.exports.init = Middleware.init;
 module.exports.defaultScope = Middleware.defaultScope;
-module.exports.expressVue = expressVue;
-exports.default = expressVue;
+exports.expressVue = expressVue;

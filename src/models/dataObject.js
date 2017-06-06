@@ -1,11 +1,11 @@
 // @flow
-import Types from './types';
+const Types = require('./types');
 
 const types = new Types();
 
 class DataObject {
     data: Object;
-    constructor(componentData: Object, defaultData: Object, type: Types) {
+    constructor(componentData: Object, defaultData: Object, type: string) {
         switch (type) {
         case types.COMPONENT:
             this.data = Object.assign({}, componentData, defaultData);
@@ -17,4 +17,4 @@ class DataObject {
     }
 }
 
-export default DataObject;
+module.exports = DataObject;

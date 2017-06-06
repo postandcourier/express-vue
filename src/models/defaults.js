@@ -20,4 +20,4 @@ class Defaults {
     }
 }
 
-export default Defaults;
+module.exports = Defaults;

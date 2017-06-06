@@ -106,4 +106,4 @@ function headUtil(vueObject: Object, styleString: string) {
     return title + metaTags + structuredData + style + '</head>';
 }
 
-export default headUtil;
+module.exports = headUtil;
