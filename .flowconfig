@@ -1,3 +1,4 @@
 [ignore]
 .*/lib/*.
 .*/node_modules/vue/src/*.
+.*/node_modules/pug/lib/*.
