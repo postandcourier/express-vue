@@ -1,13 +1,13 @@
-<template lang="html">
-  <div class="">
-      <h1>{{message}}</h1>
+<template>
+  <div>
+      <h2>{{message}}</h2>
   </div>
 </template>
 
 <script>
-export default {
-    props: ['message']
-}
+    module.exports = {
+        props: ['message']
+    }
 </script>
 
 <style lang="css">

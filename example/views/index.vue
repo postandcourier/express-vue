@@ -4,17 +4,24 @@
         <p>Welcome to the {{title}} demo. Click a link:</p>
         <button type="button" name="button" v-on:click="hello">Say FOO</button>
         <input v-model="message" placeholder="edit me">
-        <message-comp :message="message"></message-comp>
-        <users :users="users"></users>
-
+        <foo></foo>
     </div>
 </template>
 
 <script>
-export default {
+module.exports = {
     data: function() {
         return {
+            title: 'Hello'
         }
+    },
+    methods: {
+        hello: function() {
+            console.log('Foo');
+        }
+    },
+    beforeCreate: function () {
+        this.$options.components.foo = require('/Users/danielcherubini/Coding/Node/express-vue/example/views/components/foo.vue')
     }
 }
 </script>

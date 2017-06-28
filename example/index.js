@@ -3,7 +3,7 @@ const express = require('express');
 const expressVue = require('../dist');
 const app = express();
 
-app.engine('vue', expressVue);
+app.engine('vue', expressVue.expressVue2);
 app.set('view engine', 'vue');
 app.set('views', path.join(__dirname, '/views'));
 app.set('vue', {
