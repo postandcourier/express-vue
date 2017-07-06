@@ -1,18 +1,15 @@
 const path = require('path');
 const express = require('express');
-const expressVue = require('../dist');
 const app = express();
 
-app.engine('vue', expressVue);
-app.set('view engine', 'vue');
-app.set('views', path.join(__dirname, '/views'));
-app.set('vue', {
+const expressVueOptions = {
+    views: path.join(__dirname, '/views'),
     componentsDir: path.join(__dirname, '/views/components'),
-    defaultLayout: 'layout',
-    cache: {
-        ignoredKeys: ['csrf']
-    }
-});
+    defaultLayout: 'layout'
+};
+const expressVue = require('../dist').init(expressVueOptions);
+
+app.use(expressVue);
 
 var users = [];
 var pageTitle = 'Express Vue';
@@ -57,7 +54,7 @@ app.get('/', function(req, res){
             mixins: [exampleMixin]
         }
     };
-    res.render('index', scope);
+    res.renderVue('index', scope);
 });
 
 app.get('/users/:userName', function(req, res){
